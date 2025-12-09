@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Books Catalog</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f9f9f9; color: #34495e; text-align: center; padding: 50px;">
+
+  <h1 style="color: #2c3e50;">Welcome to Januth's Books Catalog. Click on your book</h1>
+  <ul id="booksList" style="list-style-type: none; padding: 0; margin-top: 20px;"></ul>
+
+  <p style="margin-top: 30px; font-size: 16px;">
+    Click here to visit the <a href="/api/books" style="color: #2980b9; text-decoration: none; font-weight: bold;">Book API</a>
+  </p>
+
+  <script>
+    const booksList = document.getElementById('booksList');
+
+    async function fetchBooks() {
+      try {
+        const res = await fetch('/api/books');
+        const body = await res.json();
+        const books = body.data || [];
+        booksList.innerHTML = '';
+
+        if (books.length === 0) {
+          booksList.textContent = 'No books found';
+          return;
+        }
+
+        books.forEach(book => {
+          const li = document.createElement('li');
+          li.textContent = `${book.title} by ${book.author}`;
+          li.style.padding = '8px 0';
+          li.style.borderBottom = '1px solid #ddd';
+          li.style.cursor = 'pointer';
+          li.style.transition = 'background 0.2s';
+          li.onmouseover = () => li.style.backgroundColor = '#ecf0f1';
+          li.onmouseout = () => li.style.backgroundColor = 'transparent';
+
+          // Click to redirect to corresponding JSON
+          li.onclick = () => {
+            window.location.href = `http://localhost:3006/api/books/${book.id}`;
+          };
+
+          booksList.appendChild(li);
+        });
+      } catch (err) {
+        console.error(err);
+        booksList.textContent = 'Error fetching books';
+      }
+    }
+
+    // Fetch books on page load
+    window.onload = fetchBooks;
+  </script>
+</body>
+</html>
