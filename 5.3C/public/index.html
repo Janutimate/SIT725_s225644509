@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Books Catalog developed by s225644509</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 40px; text-align: center;">
+
+  <h1 style="color: #2c3e50;">Books Catalog developed by s225644509</h1>
+  <p>Click the button below to get all books from the server:</p>
+
+  <button id="fetchBooksBtn"
+    style="
+      background-color: #003366;
+      color: white;
+      border: none;
+      padding: 12px 22px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    "
+  >
+    Get all books
+  </button>
+
+  <div id="booksDisplay" style="margin-top: 30px; font-size: 18px;"></div>
+  <div id="bookDetails" style="margin-top: 30px; font-size: 16px; text-align: left; display: inline-block;"></div>
+
+  <script>
+    const btn = document.getElementById('fetchBooksBtn');
+    const out = document.getElementById('booksDisplay');
+    const details = document.getElementById('bookDetails');
+
+    let booksData = [];
+
+    function render(items) {
+      out.innerHTML = '';
+      details.innerHTML = ''; 
+      if (!Array.isArray(items) || items.length === 0) {
+        out.textContent = 'No books found';
+        return;
+      }
+
+      for (const it of items) {
+        const p = document.createElement('p');
+
+        const price =
+          typeof it.price === 'string'
+            ? it.price
+            : (it.price && it.price.$numberDecimal) || it.price || '';
+
+        p.textContent = `${it.title} - ${price} AUD`;
+        p.style.cursor = 'pointer';
+        p.style.transition = 'background 0.2s';
+        p.style.padding = '6px 0';
+        p.onmouseover = () => p.style.backgroundColor = '#ecf0f1';
+        p.onmouseout = () => p.style.backgroundColor = 'transparent';
+        p.onclick = () => showDetails(it);
+
+        out.appendChild(p);
+      }
+    }
+
+    function showDetails(book) {
+      details.innerHTML = '';
+      const price =
+        typeof book.price === 'string'
+          ? book.price
+          : (book.price && book.price.$numberDecimal) || book.price || '';
+
+      const html = `
+        <p><strong>Title:</strong> ${book.title}</p>
+        <p><strong>Author:</strong> ${book.author}</p>
+        <p><strong>Year:</strong> ${book.year}</p>
+        <p><strong>Genre:</strong> ${book.genre}</p>
+        <p><strong>Summary:</strong> ${book.summary}</p>
+        <p><strong>Price (AUD):</strong> ${price}</p>
+      `;
+      details.innerHTML = html;
+    }
+
+    btn.addEventListener('click', async () => {
+      out.textContent = 'Loading...';
+      details.innerHTML = '';
+      try {
+        const res = await fetch('/api/books');
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const body = await res.json();
+        booksData = body.data || body;
+        render(booksData);
+      } catch (err) {
+        console.error('Error fetching books:', err);
+        out.textContent = 'Error fetching books.';
+      }
+    });
+  </script>
+
+</body>
+</html>
