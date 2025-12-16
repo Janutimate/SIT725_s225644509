@@ -1,0 +1,89 @@
+.navbar-size {
+  background-color: #2c3e50;
+  padding: 0 100px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+}
+
+.user-image-size {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-top: 0;
+}
+
+#nav-mobile {
+  margin-left: auto;
+}
+#nav-mobile li a {
+  color: #ecf0f1;
+  font-weight: 500;
+  margin: 0 10px;
+  transition: 0.3s;
+}
+
+#nav-mobile li a:hover {
+  color: #1abc9c;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.search-section {
+  background-color: #ecf0f1;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: center; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.search-section input[type="search"] {
+  width: 250px;
+  max-width: 90%;
+  padding: 8px 15px;
+  border-radius: 25px;
+  border: 1px solid #bdc3c7;
+  outline: none;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.search-section input[type="search"]:focus {
+  width: 350px;
+  border-color: #1abc9c;
+  box-shadow: 0 0 5px #1abc9c;
+}
+
+.main-body {
+    background-image: url("../images/bg.jpg"); /* adjust path if needed */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    color: white;
+}
+
+.materialboxed-image {
+    margin: 0 auto;
+    height: 600px;
+}
+.click-me-button {
+    background-color: #423807;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+/* .card-text {
+    color: #212121
+} */
+
+.card-content .card-title {
+    color: #f6f6f6;   /* change title color */
+}
+.card-content p {
+    color: #f9f9f9;   /* change description color */
+}
+.card {
+    background-color: rgba(0, 0, 0, 0.4); /* semi-dark transparent */
+}
