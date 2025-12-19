@@ -1,0 +1,22 @@
+{
+  "name": "3.2p",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "dependencies": {
+    "chai": "^6.2.1",
+    "express": "^5.1.0",
+    "mocha": "^11.7.5",
+    "request": "^2.88.2",
+    "save-dev": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "supertest": "^7.1.4"
+  }
+}
