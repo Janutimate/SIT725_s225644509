@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Live Cricket Match</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header>
+    <div>
+      <h1>🏏 Live Cricket Match</h1>
+      <p class="subtitle">  ICC World Cup • Streaming Now</p>
+    </div>
+    <span class="live">LIVE</span>
+  </header>
+
+  <main>
+    <div class="match-card">
+      <h2><img src="images/sl.png" alt="Sri Lanka" class="flag"> Sri Lanka  VS  <img src="images/au.png" alt="Australia" class="flag"> Australia</h2>
+      
+      <p class="score">(Batting)Sri Lanka : 245/6 (42 overs)</p>
+
+      <div class="viewers-box">
+        <p>👀 Current Viewers</p>
+        <div id="viewers">Loading...</div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Januth's Socket.IO Demo • 7.2P Task Submission</p>
+  </footer>
+
+  <!-- Load socket.io BEFORE scripts.js -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>

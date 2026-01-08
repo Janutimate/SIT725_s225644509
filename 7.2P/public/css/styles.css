@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: url("../images/bg.png") no-repeat center center / cover;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+header {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 24px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #ccc;
+  margin-top: 3px;
+}
+
+.live {
+  background: red;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.match-card {
+  background: rgba(0, 0, 0, 0.85);
+  padding: 60px 40px;
+  border-radius: 20px;
+  width: 500px;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+  line-height: 1.8;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.match-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+}
+
+.match-card h2 {
+  margin-bottom: 15px;
+  font-size: 28px;
+}
+
+.score {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.flag {
+  width: 24px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.viewers-box p {
+  font-size: 16px;
+  color: #ccc;
+  margin-bottom: 5px;
+}
+
+#viewers {
+  font-size: 48px;
+  font-weight: bold;
+  color: #00ffcc;
+  margin-top: 10px;
+}
+
+footer {
+  background: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  padding: 10px;
+  font-size: 13px;
+}
